@@ -2,12 +2,12 @@
 
 ## The front end 
 
-## 
+## https://next13-ecommerce-frontend.vercel.app
 
 -------------------------------------------------------------------------
 
 ## the dashboard
 
-## 
+## https://next13-ecommerce-backend.vercel.app
 
 
