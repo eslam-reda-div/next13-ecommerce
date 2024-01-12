@@ -34,8 +34,8 @@ export async function POST(req: Request) {
   ];
 
   const addressString = addressComponents.filter((c) => c !== null).join(', ');
-  console.log(addressString);
-  console.log(session?.customer_details?.phone);
+  // console.log(addressString);
+  // console.log(session?.customer_details?.phone);
 
   if (event.type === "checkout.session.completed") {
     const order = await prismadb.order.update({
@@ -52,18 +52,19 @@ export async function POST(req: Request) {
       }
     });
 
-    const productIds = order.orderItems.map((orderItem) => orderItem.productId);
+    // const productIds = order.orderItems.map((orderItem) => orderItem.productId);
 
-    await prismadb.product.updateMany({
-      where: {
-        id: {
-          in: [...productIds],
-        },
-      },
-      data: {
-        isArchived: true
-      }
-    });
+    // await prismadb.product.updateMany({
+    //   where: {
+    //     id: {
+    //       in: [...productIds],
+    //     },
+    //   },
+    //   data: {
+    //     isArchived: true
+    //   }
+    // });
+    // console.log("Order processed", order);
   }
 
   return new NextResponse(null, { status: 200 });
