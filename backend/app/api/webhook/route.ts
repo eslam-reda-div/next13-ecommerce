@@ -52,19 +52,19 @@ export async function POST(req: Request) {
       }
     });
 
-    // const productIds = order.orderItems.map((orderItem) => orderItem.productId);
+    const productIds = order.orderItems.map((orderItem) => orderItem.productId);
 
-    // await prismadb.product.updateMany({
-    //   where: {
-    //     id: {
-    //       in: [...productIds],
-    //     },
-    //   },
-    //   data: {
-    //     isArchived: true
-    //   }
-    // });
-    // console.log("Order processed", order);
+    await prismadb.product.updateMany({
+      where: {
+        id: {
+          in: [...productIds],
+        },
+      },
+      data: {
+        isArchived: true
+      }
+    });
+    console.log("Order processed", order);
   }
 
   return new NextResponse(null, { status: 200 });
